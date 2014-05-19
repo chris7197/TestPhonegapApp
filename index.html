@@ -1,19 +1,21 @@
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<link href="css/kendo.common.min.css" rel="stylesheet" />
+	    <link href="css/kendo.default.min.css" rel="stylesheet" />
+	    <link href="css/kendo.mobile.all.min.css" rel="stylesheet" />
 	<script type="text/javascript">
 	    window.onerror = function(message, url, lineNumber) {
 	        alert("Error: "+message+" in "+url+" at line "+lineNumber);
 	    }
-	</script
-	<link rel="stylesheet" href="css/kendo.mobile.all.min.css">
+	</script>
+	<script src="lib/jquery-1.8.2.min.js"></script>
+	
+	<script src="js/kendo.all.min.js"></script>
+	
 </head>
 <body>
-<div class="app">
-	<div id="deviceready" class="blink">
-		   <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+
     <div data-role="view" id="tabstrip-profile" data-title="Summary" data-layout="mobile-tabstrip">
     <ul data-role="listview" data-style="inset" data-type="group">
         <li>Summary
@@ -96,7 +98,6 @@
 
 
 
-</div>
       </div>
 <style scoped>
     #tabstrip-profile h2 {
@@ -165,14 +166,11 @@
     }
 </script>
 
-<script src="lib/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/kendo.mobile.min.js"></script>
-
+<script> var app = new kendo.mobile.Application($(document).body);
+</script>
 <script src="js/storage/memory-store.js"></script>
 <script src="js/main.js"></script>
-<script src="js/cordova.js"></script>
-<Script src="js/barcodescanner.js"></script>
-<script> var app2 = new kendo.mobile.Application($(document).body); app.initialize();</script>
+<script>  app.initialize();</script>
 
 </body>
 </html>
