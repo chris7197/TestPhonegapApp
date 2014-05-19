@@ -4,14 +4,170 @@
 	<link rel="stylesheet" href="css/kendo.mobile.all.min.css">
 </head>
 <body>
-<div data-role="view" data-layout="app" data-title="info" id="info"><br><div id="news"> </div> </div><br><div data-role="view" data-layout="app" data-title="schedule" id="schedule"><br><ul id="sessions"> </ul> </div> <br><div data-role="layout" data-id="app"><br><header data-role="header"><br><div data-role="navbar">Conference Tracker</div> </header> <br><footer data-role="footer"> <br><div data-role="tabstrip"><br><a href="#info" data-icon="info">Info</a><br><a href="#schedule" data-icon="recents">Schedule</a> </div> </footer> </div>
+<div class="app">
+	<div id="deviceready" class="blink">
+		   <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+    <div data-role="view" id="tabstrip-profile" data-title="Summary" data-layout="mobile-tabstrip">
+    <ul data-role="listview" data-style="inset" data-type="group">
+        <li>Summary
+            <ul>
+          
+            <li>Scanned Order<span class="value"><span id="creator" class="value"></span><a data-role="button" href="#" id="scan">Scan</a></scan></li>
+                
+            </ul>
+        </li>
+        <li>
+            Products On Order
+            <ul id="products">
+              <!--  <li>English <span class="value">Native</span></li>
+                <li>Hungarian <span class="value">Advanced</span></li>
+                <li>French <span class="value">Advanced</span></li>
+                <li>Chinese <span class="value">Beginner</span></li>-->
+            </ul>
+        </li>
+       
+    </ul>
+</div>
 
-<script type="text/javascript" charset="utf-8" src="js/kendo.mobile.min.js"></script>
+<div data-role="view" id="tabstrip-sales" data-title="Audits" data-layout="mobile-tabstrip">
+   <div id="grid"></div>
+</div>
+
+
+<div data-role="layout" data-id="mobile-tabstrip">
+    <header data-role="header">
+        <div data-role="navbar">
+            <!--<a class="nav-button" data-align="left" data-role="backbutton">Back</a>-->
+            <span data-role="view-title"></span>
+      <a data-align="right" href="#popover-people" data-rel="popover" data-role="button">Select location</a>
+  
+        </div>
+    </header>
+
+    <p>TabStrip</p>
+
+    <div data-role="footer">
+        <div data-role="tabstrip">
+            <a href="#tabstrip-profile" data-icon="about">Summary
+            </a><a href="#tabstrip-sales" data-icon="more">Audits
+            </a>
+        </div>
+    </div>
+
+     <div data-role="popover" id="popover-people" data-popup='{"height": "16em", "width": "20em"}'>
+        <div data-role="view" data-title="People">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                    <a data-role="button" data-align="right" data-click="closeParentPopover">Close</a>
+                </div>
+            </div>
+            <ul data-role="listview">
+                <li><label>Chris<input type="checkbox"></label></li>
+                <li><label>Neil<input type="checkbox"></label></li>
+                <li><label>Sam<input type="checkbox"></label></li>
+                <li><label>Mark<input type="checkbox"></label></li>
+            </ul>
+        </div>
+    </div>
+
+    <div data-role="modalview" id="modalview-login" style="width: 90%;">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span>Login</span>
+            <a data-click="closeModalViewLogin" data-role="button" data-align="right">Cancel</a>
+        </div>
+    </div>
+
+    <ul data-role="listview" data-style="inset">
+        <li><label for="username">Username: <input type="text" id="username" /></label></li>
+        <li><label for="password">Password: <input type="password" id="password" /></label></li>
+    </ul>
+    <a data-click="closeModalViewLogin" id="modalview-login-button" type="button" data-role="button">Login</a>
+    <a data-click="closeModalViewLogin" id="modalview-reg-button" type="button" data-role="button">Register</a>
+</div>
+
+
+
+</div>
+      </div>
+<style scoped>
+    #tabstrip-profile h2 {
+        display: inline-block;
+        font-size: 1.1em;
+        margin: 1.5em 0 0 .7em;
+    }
+    #tabstrip-profile h2 span {
+        display: block;
+        clear: both;
+        font-size: 1.8em;
+        margin: .1em 0 0 0;
+    }
+    #tabstrip-profile img {
+        width: 5em;
+        height: 5em;
+        float: left;
+        margin: 1em;
+        border: 1px solid rgba(0,0,0,.2);
+        -webkit-border-radius: 4em;
+        border-radius: 4em;
+    }
+    
+    .sales-down,
+    .sales-hold,
+    .sales-up,
+    .value {
+        float: right;
+    }
+    .sales-up { color: green; }
+    .sales-down { color: red; }
+    .sales-hold { color: blue; }
+    .value { color: #bbb; }
+</style>
+    
+<style scoped>
+    .km-ios #popover .km-view-title,
+    .km-ios #popover-people .km-view-title
+    {
+        color: #fff;
+        text-shadow: 0 -1px rgba(0,0,0,.5);
+    }
+
+    .km-ios #popover .km-navbar,
+    .km-root > * > #popover > .km-content
+    {
+        background: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(255, 255, 255, 0.35)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(0.5, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0))) #000;
+    }
+
+    .km-ios #popover .km-navbar .km-button
+    {
+        background-color: #000;
+    }
+</style>
+    <script>
+        function closeModalViewLogin() {
+            $("#modalview-login").kendoMobileModalView("close");
+        }
+</script>
+<script>
+    function closeParentPopover(e) {
+
+        var popover = e.sender.element.closest('[data-role=popover]').data('kendoMobilePopOver');
+
+        popover.close();
+    }
+</script>
 
 <script src="lib/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/kendo.mobile.min.js"></script>
+
 <script src="js/storage/memory-store.js"></script>
 <script src="js/main.js"></script>
-<script> var app = new kendo.mobile.Application($(document).body);</script>
+<script src="js/cordova.js"></script>
+<Script src="js/barcodescanner.js"></script>
+<script> var app2 = new kendo.mobile.Application($(document).body); app.initialize();</script>
 
 </body>
 </html>
