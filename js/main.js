@@ -35,8 +35,7 @@ var app = {
     scan: function() {
         console.log('scanning');
         
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-
+   var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
         scanner.scan( function (result) { 
 
@@ -76,17 +75,5 @@ var app = {
             console.log("Scanning failed: ", error); 
         } );
     },
-
-    encode: function() {
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-
-        scanner.encode(scanner.Encode.TEXT_TYPE, "http://www.nhl.com", function(success) {
-            alert("encode success: " + success);
-          }, function(fail) {
-            alert("encoding failed: " + fail);
-          }
-        );
-
-    }
 
 };
