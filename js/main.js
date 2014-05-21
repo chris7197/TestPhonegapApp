@@ -43,7 +43,7 @@ var app = {
 
                 $.ajax({
                 type: 'POST',
-                url: "http://apptest.chrisstclair.co.uk/OrderSvc/GetOrderNo",
+                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo",
                 contentType: 'application/json; charset=UTF-8',
                 dataType: 'jsonp',
                 data: str,
