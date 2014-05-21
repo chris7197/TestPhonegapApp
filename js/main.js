@@ -45,7 +45,7 @@ var app = {
                 type: 'POST',
                 url: "http://apptest.chrisstclair.co.uk/OrderSvc/GetOrderNo",
                 contentType: 'application/json; charset=UTF-8',
-                dataType: 'json',
+                dataType: 'jsonp',
                 data: str,
                 async: true,
                 error: function (msg) {
