@@ -17,7 +17,9 @@
     Chris St Clair
     </author>
     
-    
+    <access origin="http://127.0.0.1*" />
+<access origin="http://chrisstclair.co.uk" subdomains="true" />
+<access origin=".*" />  <!-- only during development -->
     
      <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
