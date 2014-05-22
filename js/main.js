@@ -48,9 +48,9 @@ alert('ready');
                 contentType: 'application/json; charset=UTF-8',
                 dataType: 'jsonp',
                 async: true,
-                error: function (msg) {
-                    alert('failure');
-                    alert(msg.status);
+                error: function (xhr,test1,test2) {
+                    alert('failure - ' + xhr.status + ' - ' + xhr.statusText + ' - ' + xhr.responseText);
+          
                 }
             });
 
