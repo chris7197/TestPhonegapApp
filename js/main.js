@@ -44,10 +44,9 @@ alert('ready');
 
                 $.ajax({
                 type: 'GET',
-                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo",
+                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + result,
                 contentType: 'application/json; charset=UTF-8',
                 dataType: 'jsonp',
-                data: str,
                 async: true,
                 error: function (msg) {
                     alert('failure');
