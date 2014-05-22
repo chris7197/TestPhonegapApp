@@ -167,6 +167,11 @@
 <script src="barcodescanner.js"></script>
 <script> var app2 = new kendo.mobile.Application($(document).body);
 </script>
+<script>
+$(document).bind("mobileinit", function(){
+   $.mobile.allowCrossDomainPages = true;
+});
+</script>
 
 <script src="js/main.js"></script>
 <script>  app.initialize();</script>
