@@ -24,8 +24,8 @@
             </ul>
         </li>
         <li>
-            Products On Order
-            <ul id="products">
+            Scanned Barcodes
+            <ul id="scannedBarcodes">
               <!--  <li>English <span class="value">Native</span></li>
                 <li>Hungarian <span class="value">Advanced</span></li>
                 <li>French <span class="value">Advanced</span></li>
@@ -37,7 +37,7 @@
 </div>
 
 <div data-role="view" id="tabstrip-sales" data-title="Audits" data-layout="mobile-tabstrip">
-   <div id="grid"></div>
+  Audits go here
 </div>
 
 
@@ -59,40 +59,6 @@
             </a>
         </div>
     </div>
-
-     <div data-role="popover" id="popover-people" data-popup='{"height": "16em", "width": "20em"}'>
-        <div data-role="view" data-title="People">
-            <div data-role="header">
-                <div data-role="navbar">
-                    <span data-role="view-title"></span>
-                    <a data-role="button" data-align="right" data-click="closeParentPopover">Close</a>
-                </div>
-            </div>
-            <ul data-role="listview">
-                <li><label>Chris<input type="checkbox"></label></li>
-                <li><label>Neil<input type="checkbox"></label></li>
-                <li><label>Sam<input type="checkbox"></label></li>
-                <li><label>Mark<input type="checkbox"></label></li>
-            </ul>
-        </div>
-    </div>
-
-    <div data-role="modalview" id="modalview-login" style="width: 90%;">
-    <div data-role="header">
-        <div data-role="navbar">
-            <span>Login</span>
-            <a data-click="closeModalViewLogin" data-role="button" data-align="right">Cancel</a>
-        </div>
-    </div>
-
-    <ul data-role="listview" data-style="inset">
-        <li><label for="username">Username: <input type="text" id="username" /></label></li>
-        <li><label for="password">Password: <input type="password" id="password" /></label></li>
-    </ul>
-    <a data-click="closeModalViewLogin" id="modalview-login-button" type="button" data-role="button">Login</a>
-    <a data-click="closeModalViewLogin" id="modalview-reg-button" type="button" data-role="button">Register</a>
-</div>
-
 
 
       </div>
@@ -149,19 +115,7 @@
         background-color: #000;
     }
 </style>
-    <script>
-        function closeModalViewLogin() {
-            $("#modalview-login").kendoMobileModalView("close");
-        }
-</script>
-<script>
-    function closeParentPopover(e) {
 
-        var popover = e.sender.element.closest('[data-role=popover]').data('kendoMobilePopOver');
-
-        popover.close();
-    }
-</script>
 <script src="phonegap.js"></script>
 <script src="barcodescanner.js"></script>
 <script> var app2 = new kendo.mobile.Application($(document).body);
@@ -174,7 +128,11 @@ $(document).bind("mobileinit", function(){
 
 <script src="js/main.js"></script>
 <script>  app.initialize();</script>
-
-
+<script src="lib/fastclick.js" />
+<script>
+$(function() {
+    FastClick.attach(document.body);
+});
+</script>
 </body>
 </html>
