@@ -49,8 +49,9 @@ var app = {
                 async: true,
                 success: function(msg)
                 {
-                    debugger;
+					playAudio('../Resources/sounds/success.wav');
                     $('#scannedBarcodes').append('<li>' + msg.GetOrderNoResult.OrderID + '<span class="value">' + msg.GetOrderNoResult.Random +'</span></li>');
+					
                 },
                 error: function (xhr,test1,test2) {
                     alert('failure - ' + xhr.status + ' - ' + xhr.statusText + ' - ' + xhr.responseText);
@@ -76,3 +77,12 @@ var app = {
     },
 
 };
+ var my_media = null;
+function playAudio(src) {
+           // Create Media object from src
+           my_media = new Media(src);
+
+           // Play audio
+           my_media.play();
+
+       }
