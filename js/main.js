@@ -17,7 +17,8 @@ var app = {
     // The scope of `this` is the event. In order to call the `receivedEvent`
     // function, we must explicity call `app.receivedEvent(...);`
     onDeviceReady: function() {
-alert('ready');
+
+      
         app.receivedEvent('deviceready');
     },
 
@@ -42,9 +43,9 @@ alert('ready');
 
                 $.ajax({
                 type: 'GET',
-                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + result,
+                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + result.text,
                 contentType: 'application/json; charset=UTF-8',
-                dataType: 'jsonp',
+                dataType: 'json',
                 async: true,
                 success: function(msg)
                 {
