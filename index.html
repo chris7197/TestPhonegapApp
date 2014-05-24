@@ -50,8 +50,6 @@
         </div>
     </header>
 
-    <p>TabStrip</p>
-
     <div data-role="footer">
         <div data-role="tabstrip">
             <a href="#tabstrip-profile" data-icon="about">Summary
@@ -59,8 +57,6 @@
             </a>
         </div>
     </div>
-
-
       </div>
 <style scoped>
     #tabstrip-profile h2 {
@@ -95,27 +91,7 @@
     .sales-hold { color: blue; }
     .value { color: #bbb; }
 </style>
-    
-<style scoped>
-    .km-ios #popover .km-view-title,
-    .km-ios #popover-people .km-view-title
-    {
-        color: #fff;
-        text-shadow: 0 -1px rgba(0,0,0,.5);
-    }
-
-    .km-ios #popover .km-navbar,
-    .km-root > * > #popover > .km-content
-    {
-        background: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(255, 255, 255, 0.35)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(0.5, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0))) #000;
-    }
-
-    .km-ios #popover .km-navbar .km-button
-    {
-        background-color: #000;
-    }
-</style>
-
+  
 <script src="phonegap.js"></script>
 <script src="barcodescanner.js"></script>
 <script> var app2 = new kendo.mobile.Application($(document).body);
@@ -125,7 +101,6 @@ $(document).bind("mobileinit", function(){
    $.mobile.allowCrossDomainPages = true;
 });
 </script>
-
 <script src="js/main.js"></script>
 <script>  app.initialize();</script>
 <script src="lib/fastclick.js" />
