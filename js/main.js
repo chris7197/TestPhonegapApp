@@ -40,6 +40,7 @@ var app = {
    var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
         scanner.scan( function (result) { 
+$('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
 
                 $.ajax({
                 type: 'GET',
@@ -49,7 +50,10 @@ var app = {
                 async: true,
                 success: function(msg)
                 {
-					playAudio('../Resources/sounds/success.wav');
+$('#scannedBarcodes li:last').remove();
+var pgPath = getPhoneGapPath();
+
+					playAudio(pgPath + 'Resources/sounds/success.wav');
                     $('#scannedBarcodes').append('<li>' + msg.GetOrderNoResult.OrderID + '<span class="value">' + msg.GetOrderNoResult.Random +'</span></li>');
 					
                 },
@@ -86,3 +90,11 @@ function playAudio(src) {
            my_media.play();
 
        }
+function getPhoneGapPath() {
+
+    var path = window.location.pathname;
+    path = path.substr( path, path.length - 10 );
+    return 'file://' + path;
+
+};
+
