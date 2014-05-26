@@ -13,43 +13,29 @@
 	
 </head>
 <body>
-
     <div data-role="view" id="tabstrip-profile" data-title="Summary" data-layout="mobile-tabstrip">
     <ul data-role="listview" data-style="inset" data-type="group">
         <li>Summary
             <ul>
-          
             <li>Scanned Order<span class="value"><span id="creator" class="value"></span><a data-role="button" href="#" id="scan">Scan</a></scan></li>
-                
             </ul>
         </li>
         <li>
             Scanned Barcodes
             <ul id="scannedBarcodes">
-              <!--  <li>English <span class="value">Native</span></li>
-                <li>Hungarian <span class="value">Advanced</span></li>
-                <li>French <span class="value">Advanced</span></li>
-                <li>Chinese <span class="value">Beginner</span></li>-->
             </ul>
         </li>
-       
     </ul>
 </div>
-
 <div data-role="view" id="tabstrip-sales" data-title="Audits" data-layout="mobile-tabstrip">
   Audits go here
 </div>
-
-
 <div data-role="layout" data-id="mobile-tabstrip">
     <header data-role="header">
         <div data-role="navbar">
-            <!--<a class="nav-button" data-align="left" data-role="backbutton">Back</a>-->
             <span data-role="view-title"></span>
-   
         </div>
     </header>
-
     <div data-role="footer">
         <div data-role="tabstrip">
             <a href="#tabstrip-profile" data-icon="about">Summary
@@ -91,7 +77,6 @@
     .sales-hold { color: blue; }
     .value { color: #bbb; }
 </style>
-  
 <script src="phonegap.js"></script>
 <script src="barcodescanner.js"></script>
 <script> var app2 = new kendo.mobile.Application($(document).body);
