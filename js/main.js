@@ -37,21 +37,20 @@ var app = {
     scan: function() {
         console.log('scanning');
         
-   var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
+ //  var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
-        scanner.scan( function (result) { 
+//        scanner.scan( function (result) { 
 $('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
-
                 $.ajax({
                 type: 'GET',
-                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + result.text,
+                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + 2,
                 contentType: 'application/json; charset=UTF-8',
-                dataType: 'json',
+                dataType: 'jsonp',
                 async: true,
                 success: function(msg)
                 {
-$('#scannedBarcodes li:last').remove();
-var pgPath = getPhoneGapPath();
+                    $('#scannedBarcodes li:last').remove();
+                    var pgPath = getPhoneGapPath();
 
 					playAudio(pgPath + 'Resources/sounds/success.wav');
                     $('#scannedBarcodes').append('<li>' + msg.GetOrderNoResult.OrderID + '<span class="value">' + msg.GetOrderNoResult.Random +'</span></li>');
@@ -63,31 +62,27 @@ var pgPath = getPhoneGapPath();
             });
 
 
-           console.log("Scanner result: \n" +
-                "text: " + result.text + "\n" +
-                "format: " + result.format + "\n" +
-                "cancelled: " + result.cancelled + "\n");
-            document.getElementById("info").innerHTML = result.text;
-        console.log(result);
+          
             /*
             if (args.format == "QR_CODE") {
                 window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
             }
             */
 
-        }, function (error) { 
-            console.log("Scanning failed: ", error); 
-        } );
+        //}, function (error) { 
+//            console.log("Scanning failed: ", error); 
+  //      } 
     },
 
 };
  var my_media = null;
 function playAudio(src) {
+
            // Create Media object from src
-           my_media = new Media(src);
+    //       my_media = new Media(src);
 
            // Play audio
-           my_media.play();
+      //     my_media.play();
 
        }
 function getPhoneGapPath() {
