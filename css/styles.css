@@ -188,3 +188,17 @@ h2 {
     width:100px;
     height:100px;
 }
+
+.CameraIcon
+{
+    float: right; 
+    font-size: 30px; 
+    color: white; 
+    margin-right: 5px; 
+    margin-top: 5px;
+}
+
+.CameraIcon a:hover
+{
+    text-decoraiton: none;
+}

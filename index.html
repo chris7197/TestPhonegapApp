@@ -6,20 +6,16 @@
 	<link href="css/kendo.common.min.css" rel="stylesheet" />
 	    <link href="css/kendo.default.min.css" rel="stylesheet" />
 	    <link href="css/kendo.mobile.all.min.css" rel="stylesheet" />
+<link href="css/bootstrap.min.css" rel="stylesheet" />
 
 	<script src="lib/jquery-1.8.2.min.js"></script>
 	
 	<script src="js/kendo.all.min.js"></script>
-	
+<script src="js/bootstrap.min.js"></script>	
 </head>
 <body>
     <div data-role="view" id="tabstrip-profile" data-title="Summary" data-layout="mobile-tabstrip">
     <ul data-role="listview" data-style="inset" data-type="group">
-        <li>Summary
-            <ul>
-            <li>Scanned Order<span class="value"><span id="creator" class="value"></span><a data-role="button" href="#" id="scan">Scan</a></scan></li>
-            </ul>
-        </li>
         <li>
             Scanned Barcodes
             <ul id="scannedBarcodes">
@@ -32,8 +28,8 @@
 </div>
 <div data-role="layout" data-id="mobile-tabstrip" style="height:100%;">
     <header data-role="header">
-        <div data-role="navbar">
-            <span data-role="view-title"></span>
+        <div data-role="navbar" style="background-color: #FF6251; color: #FFFFFF;">
+            <span data-role="view-title" style="color: white;"></span><a id="scan" class="glyphicon glyphicon-camera CameraIcon"></a>
         </div>
     </header>
     <div data-role="footer">
@@ -76,6 +72,20 @@
     .sales-down { color: red; }
     .sales-hold { color: blue; }
     .value { color: #bbb; }
+
+    .CameraIcon
+{
+    float: right; 
+    font-size: 30px; 
+    color: white !important;  
+    margin-right: 5px; 
+    margin-top: 5px;
+}
+
+.CameraIcon a:hover
+{
+    text-decoration: none;
+}
 </style>
 <script src="phonegap.js"></script>
 <script src="barcodescanner.js"></script>
