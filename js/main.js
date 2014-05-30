@@ -37,13 +37,13 @@ var app = {
     scan: function() {
         console.log('scanning');
         
- //  var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
+   var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
-//        scanner.scan( function (result) { 
+        scanner.scan( function (result) { 
 $('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
                 $.ajax({
                 type: 'GET',
-                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + 2,
+                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + result,
                 contentType: 'application/json; charset=UTF-8',
                 dataType: 'jsonp',
                 async: true,
@@ -69,9 +69,9 @@ $('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
             }
             */
 
-        //}, function (error) { 
-//            console.log("Scanning failed: ", error); 
-  //      } 
+        }, function (error) { 
+            console.log("Scanning failed: ", error); 
+        } 
     },
 
 };
