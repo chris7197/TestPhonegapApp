@@ -56,8 +56,10 @@ $('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
                     $('#scannedBarcodes').append('<li>' + msg.GetOrderNoResult.OrderID + '<span class="value">' + msg.GetOrderNoResult.Random +'</span></li>');
 					
                 },
-                error: function (xhr,test1,test2) {
-                    alert('failure - ' + xhr.status + ' - ' + xhr.statusText + ' - ' + xhr.responseText);
+                error: function (msg) {
+                    $('#scannedBarcodes li:last').remove();
+                    $('#scannedBarcodes').append('<li>ERROR:' + msg.statusText + '</li>');
+				
                 }
             });
 
@@ -70,7 +72,7 @@ $('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
             */
 
         }, function (error) { 
-            console.log("Scanning failed: ", error); 
+              $('#scannedBarcodes').append('<li>ERROR:' + msg.statusText + '</li>');
         });
     }
 }
