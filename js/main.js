@@ -71,10 +71,11 @@ $('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
 
         }, function (error) { 
             console.log("Scanning failed: ", error); 
-        } 
-    },
+        });
+    }
+}
 
-};
+
  var my_media = null;
 function playAudio(src) {
 
