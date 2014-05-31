@@ -45,7 +45,7 @@ $('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
                 type: 'GET',
                 url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + result,
                 contentType: 'application/json; charset=UTF-8',
-                dataType: 'json',
+                dataType: 'jsonp',
                 async: true,
                 success: function(msg)
                 {
