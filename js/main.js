@@ -17,8 +17,6 @@ var app = {
     // The scope of `this` is the event. In order to call the `receivedEvent`
     // function, we must explicity call `app.receivedEvent(...);`
     onDeviceReady: function() {
-
-      
         app.receivedEvent('deviceready');
     },
 
@@ -40,10 +38,10 @@ var app = {
    var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
         scanner.scan( function (result) { 
-$('#scannedBarcodes').append('<li style="color: red;">Loading for ' + result + '...</li>');
+$('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
                 $.ajax({
                 type: 'GET',
-                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + result,
+                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + result.text,
                 contentType: 'application/json; charset=UTF-8',
                 dataType: 'json',
                 async: true,
@@ -95,4 +93,3 @@ function getPhoneGapPath() {
     return 'file://' + path;
 
 };
-
