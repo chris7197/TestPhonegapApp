@@ -30,7 +30,7 @@
 <div data-role="view" id="tabstrip-sales" data-title="Audits" data-layout="mobile-tabstrip">
   Audits go here
 </div>
-<div data-role="layout" data-id="mobile-tabstrip">
+<div data-role="layout" data-id="mobile-tabstrip" style="height:100%;">
     <header data-role="header">
         <div data-role="navbar">
             <span data-role="view-title"></span>
@@ -44,6 +44,39 @@
         </div>
     </div>
       </div>
+<style scoped>
+    #tabstrip-profile h2 {
+        display: inline-block;
+        font-size: 1.1em;
+        margin: 1.5em 0 0 .7em;
+    }
+    #tabstrip-profile h2 span {
+        display: block;
+        clear: both;
+        font-size: 1.8em;
+        margin: .1em 0 0 0;
+    }
+    #tabstrip-profile img {
+        width: 5em;
+        height: 5em;
+        float: left;
+        margin: 1em;
+        border: 1px solid rgba(0,0,0,.2);
+        -webkit-border-radius: 4em;
+        border-radius: 4em;
+    }
+    
+    .sales-down,
+    .sales-hold,
+    .sales-up,
+    .value {
+        float: right;
+    }
+    .sales-up { color: green; }
+    .sales-down { color: red; }
+    .sales-hold { color: blue; }
+    .value { color: #bbb; }
+</style>
 <script src="phonegap.js"></script>
 <script src="barcodescanner.js"></script>
 <script> var app2 = new kendo.mobile.Application($(document).body);
