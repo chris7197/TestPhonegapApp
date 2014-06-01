@@ -40,12 +40,12 @@ var app = {
    var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
         scanner.scan( function (result) { 
-$('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
+$('#scannedBarcodes').append('<li style="color: red;">Loading for ' + result + '...</li>');
                 $.ajax({
                 type: 'GET',
                 url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + result,
                 contentType: 'application/json; charset=UTF-8',
-                dataType: 'jsonp',
+                dataType: 'json',
                 async: true,
                 success: function(msg)
                 {
