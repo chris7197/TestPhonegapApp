@@ -70,7 +70,7 @@ $('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
             */
 
         }, function (error) { 
-              $('#scannedBarcodes').append('<li>ERROR:' + msg.statusText + '</li>');
+             
         });
     }
 }
