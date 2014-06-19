@@ -14,12 +14,23 @@
 <script src="js/bootstrap.min.js"></script>	
 </head>
 <body>
-    <div data-role="view" id="tabstrip-profile" data-title="Summary" data-layout="mobile-tabstrip">
-    <ul data-role="listview" data-style="inset" data-type="group">
+    <div data-role="view" id="tabstrip-profile" data-title="Create" data-layout="mobile-tabstrip">
+<form>
+    <ul data-role="listview" data-style="inset">
         <li>
-            Scanned Barcodes
-            <ul id="scannedBarcodes">
-            </ul>
+            <label>Magic No
+            <input type="text" id="magicNo">
+        </label>
+        </li>
+        <li>
+            <label>Required Date
+<input type="date" id="requiredDate">
+            </label>
+        </li>
+        <li>
+            <label>Company
+            <input type="text" id="company">
+        </label>
         </li>
     </ul>
 </div>
@@ -81,6 +92,28 @@
     text-decoration: none;
 }
 </style>
+<script>
+  $("#company").kendoDropDownList({
+        dataTextField: "Name",
+        dataValueField: "ID",
+        index: -1,
+        dataSource: {
+            transport: {
+                read: {
+                    dataType: "json",
+                    url: "http://apptest.chrisstclair.co.uk/Services/Common.svc/GetCompanies",
+                }
+            },
+            schema:
+            {
+                data: "d"
+            }
+        },
+         popup: { appendTo: body },
+                animation: { open: { effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down" } }
+    });
+
+</script>
 <script src="phonegap.js"></script>
 <script src="barcodescanner.js"></script>
 <script> var app2 = new kendo.mobile.Application($(document).body);
@@ -91,11 +124,13 @@ $(document).bind("mobileinit", function(){
 });
 </script>
 <script src="js/main.js"></script>
+
 <script>  app.initialize();</script>
 <script src="lib/fastclick.js" />
 <script>
 $(function() {
     FastClick.attach(document.body);
+
 });
 </script>
 </body>
