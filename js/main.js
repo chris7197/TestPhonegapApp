@@ -17,6 +17,25 @@ var app = {
     // The scope of `this` is the event. In order to call the `receivedEvent`
     // function, we must explicity call `app.receivedEvent(...);`
     onDeviceReady: function() {
+         $("#company").kendoDropDownList({
+        dataTextField: "Name",
+        dataValueField: "ID",
+        index: -1,
+        dataSource: {
+            transport: {
+                read: {
+                    dataType: "json",
+                    url: "http://apptest.chrisstclair.co.uk/Services/Common.svc/GetCompanies",
+                }
+            },
+            schema:
+            {
+                data: "d"
+            }
+        },
+         popup: { appendTo: body },
+                animation: { open: { effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down" } }
+    });
         app.receivedEvent('deviceready');
     },
 
@@ -33,7 +52,7 @@ var app = {
     },
 
     scan: function() {
-        console.log('scanning');
+        console.log('scanning');ssssssss
         
    var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
