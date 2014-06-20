@@ -17,6 +17,7 @@ var app = {
     // The scope of `this` is the event. In order to call the `receivedEvent`
     // function, we must explicity call `app.receivedEvent(...);`
     onDeviceReady: function() {
+        alert('in device ready');
          $("#company").kendoDropDownList({
         dataTextField: "Name",
         dataValueField: "ID",
@@ -36,6 +37,8 @@ var app = {
          popup: { appendTo: body },
                 animation: { open: { effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down" } }
     });
+         alert('on device ready');
+        
         app.receivedEvent('deviceready');
     },
 
@@ -66,7 +69,7 @@ var app = {
                 async: true,
                 success: function(msg)
                 {
-                    $('#productList').append('<li data-id="' + msg.ID + '">' + msg.Name + '</li>');					
+                    $('#productList').append('<li data-id="' + msg.d.ID + '">' + msg.d.Name + '</li>');					
                 },
                 error: function (msg) {
     				alert('fail' + msg.errorText);
