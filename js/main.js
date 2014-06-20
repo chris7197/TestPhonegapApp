@@ -96,7 +96,7 @@ function saveOrder()
       var magicNo = $('#magicNo').val();
     var requiredDate = $("#requiredDate").val();
     var company = $("#company").data("kendoDropDownList").value();
-    var products;
+    var products = [];
     var i =0;
     $("#productList li").each(function() {
         products[i] = $(this).data("id");
