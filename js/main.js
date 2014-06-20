@@ -94,7 +94,7 @@ function getPhoneGapPath() {
 function saveOrder()
 {
       var magicNo = $('#magicNo').val();
-    var requiredDate = $("#requiredDate").data("kendoDatePicker").value();
+    var requiredDate = $("#requiredDate").val();
     var company = $("#company").data("kendoDropDownList").value();
     var products;
     var i =0;
@@ -113,8 +113,8 @@ function saveOrder()
         async: true,
         success: function (msg) {
             $('#magicNo').val('');
-            $('#requiredDate').data("kendoDatePicker").value('');
-            $('#company').data("kendoDropDownList").value('');
+            $('#requiredDate').val('');
+                        $('#company').data("kendoDropDownList").value('');
             $('#products').empty();
         },
         error: function (msg) {
