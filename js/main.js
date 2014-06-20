@@ -52,31 +52,24 @@ var app = {
     },
 
     scan: function() {
-        console.log('scanning');ssssssss
+        console.log('scanning');
         
    var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
-        scanner.scan( function (result) { 
-$('#scannedBarcodes').append('<li style="color: red;">Loading...</li>');
+        scanner.scan( function (result) {
+
                 $.ajax({
                 type: 'GET',
-                url: "http://apptest.chrisstclair.co.uk/OrderSvc.svc/GetOrderNo?orderID=" + result.text,
+                url: "http://apptest.chrisstclair.co.uk/Services/Services/RetrieveProduct.svc/GetProductInformation?productID=" + result.text,
                 contentType: 'application/json; charset=UTF-8',
                 dataType: 'json',
                 async: true,
                 success: function(msg)
                 {
-                    $('#scannedBarcodes li:last').remove();
-                    var pgPath = getPhoneGapPath();
-
-					playAudio(pgPath + 'Resources/sounds/success.wav');
-                    $('#scannedBarcodes').append('<li>' + msg.GetOrderNoResult.OrderID + '<span class="value">' + msg.GetOrderNoResult.Random +'</span></li>');
-					
+                    $('#productList').append('<li data-id="' + msg.ID + '">' + msg.Name + '</li>');					
                 },
                 error: function (msg) {
-                    $('#scannedBarcodes li:last').remove();
-                    $('#scannedBarcodes').append('<li>ERROR:' + msg.statusText + '</li>');
-				
+    				alert('fail' + msg.errorText);
                 }
             });
 
