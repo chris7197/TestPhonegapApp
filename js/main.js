@@ -18,6 +18,9 @@ var app = {
     // function, we must explicity call `app.receivedEvent(...);`
     onDeviceReady: function() {
          $("#company").kendoDropDownList();
+         $( "#saveButton" ).click(function() {
+            saveOrder();
+});
         app.receivedEvent('deviceready');
     },
 
@@ -87,3 +90,35 @@ function getPhoneGapPath() {
     return 'file://' + path;
 
 };
+
+function saveOrder()
+{
+      var magicNo = $('#magicNo').val();
+    var requiredDate = $("#requiredDate").data("kendoDatePicker").value();
+    var company = $("#company").data("kendoDropDownList").value();
+    var products;
+    var i =0;
+    $("#productList li").each(function() {
+        products[i] = $(this).data("id");
+        i++;
+    });
+
+     var str = JSON.stringify({ magicNo: magicNo, companyID: company, requiredDate: requiredDate, productIDs: products });
+    $.ajax({
+        type: 'POST',
+        url: "http://apptest.chrisstclair.co.uk/Services/OrderCreation.svc/CreateHeader",
+        contentType: 'application/json; charset=UTF-8',
+        dataType: 'json',
+        data: str,
+        async: true,
+        success: function (msg) {
+            $('#magicNo').val('');
+            $('#requiredDate').data("kendoDatePicker").value('');
+            $('#company').data("kendoDropDownList").value('');
+            $('#products').empty();
+        },
+        error: function (msg) {
+            alert(msg.responseText);
+        }
+    });
+}
