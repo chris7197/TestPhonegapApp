@@ -115,7 +115,8 @@ function saveOrder()
             $('#magicNo').val('');
             $('#requiredDate').val('');
                         $('#company').data("kendoDropDownList").value('');
-            $('#products').empty();
+            $('#productList').empty();
+            alert('Saved!');
         },
         error: function (msg) {
             alert(msg.responseText);
