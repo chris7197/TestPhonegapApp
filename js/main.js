@@ -54,9 +54,10 @@ var app = {
                     $('#productList').append('<li data-id="' + msg.d.ID + '">' + msg.d.Name + '</li>');					
                 },
                 error: function (msg) {
-For (var propt in msg)
+for (var propt in msg)
     				{
     alert(propt + ': ' + obj[propt]);
+}
 }}
                 }
             });
