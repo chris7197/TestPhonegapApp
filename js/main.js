@@ -45,7 +45,7 @@ var app = {
 
                 $.ajax({
                 type: 'GET',
-                url: "http://apptest.chrisstclair.co.uk/Services/RetrieveProduct.svc/GetProductInformation?productID=" + result.text,
+                url: "http://apptest.chrisstclair.co.uk/Services/RetrieveProduct.svc/GetProductInformation?productID=1",
                 contentType: 'application/json; charset=UTF-8',
                 dataType: 'json',
                 async: true,
