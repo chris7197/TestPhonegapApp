@@ -56,6 +56,7 @@ var app = {
                 error: function (msg,msg2,msg3) 
 {
 alert(msg.responseText);
+}
 }}
                 }
             });
