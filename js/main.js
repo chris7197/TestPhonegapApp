@@ -53,11 +53,9 @@ var app = {
                 {
                     $('#productList').append('<li data-id="' + msg.d.ID + '">' + msg.d.Name + '</li>');					
                 },
-                error: function (msg) {
-for (var propt in msg)
-    				{
-    alert(propt + ': ' + obj[propt]);
-}
+                error: function (msg,msg2,msg3) 
+{
+alert(msg.responseText);
 }}
                 }
             });
