@@ -19,7 +19,7 @@
 
    <icon src="Resources/icons/icon.png" />
     
-<access origin="*://*.chrisstclair.co.uk/*" subdomains="true" />  <!-- only during development -->
+<access origin="*://apptest.chrisstclair.co.uk/*" subdomains="true" />  <!-- only during development -->
     
      <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
