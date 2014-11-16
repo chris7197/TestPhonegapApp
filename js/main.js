@@ -9,6 +9,8 @@ var app = {
     // `load`, `deviceready`, `offline`, and `online`.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+ document.addEventListener("offline", onOffline, false);
+        document.addEventListener("online", onOnline);
         document.getElementById('scan').addEventListener('click', this.scan, false);
     },
 
@@ -92,6 +94,16 @@ function getPhoneGapPath() {
     return 'file://' + path;
 
 };
+
+function onOnline()
+{
+alert('Online');
+}
+
+function onOffline()
+{
+alert('Offline');
+}
 
 function saveOrder()
 {
