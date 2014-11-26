@@ -11,7 +11,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
  document.addEventListener("offline", onOffline, false);
         document.addEventListener("online", onOnline);
-        document.getElementById('scan').addEventListener('click', this.scan, false);
+        document.getElementById('scanPallet').addEventListener('click', this.scan, false);
     },
 
     // deviceready Event Handler
