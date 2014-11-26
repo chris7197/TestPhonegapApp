@@ -14,11 +14,22 @@
 <script src="js/bootstrap.min.js"></script>	
 </head>
 <body>
-    <div data-role="view" id="scanPalletVw" data-title="Scan Pallet">
+
+<div data-role="header">
+        <div data-role="navbar">
+            <span>Customers</span>
+        </div>
+    </div>
+    <div data-role="view" id="scanPalletVw" data-title="Scan Pallet" style="text-align: center;">
          <div class="home head">&nbsp;</div>
-    <a class="button" data-role="button" id="scanPallet">SCAN PALLET</a>
+    <a class="button" data-role="button" id="scanPallet" style="font-size: 25px;">SCAN PALLET</a>
+    <input type="hidden" id="palletNumberHdn" />
 </div>
 
+<div data-role="view" id="palletInformationVw" data-title="Adjust Pallet" data-source="palletDataSource" data-model="palletModel">
+
+    </div>
+ 
 <script src="phonegap.js"></script>
 <script src="barcodescanner.js"></script>
 <script> var app2 = new kendo.mobile.Application($(document).body);
@@ -38,5 +49,13 @@ $(function() {
 
 });
 </script>
+
+<script id="palletTemplate" type="text/x-kendo-template">
+
+    <ul data-role="listview" data-style="inset">
+        <li><label for="palletNumber">Pallet Number:</label> <span id="palletNumber">#: PalletNumber </span></li>
+    </ul>
+</script>
+
 </body>
 </html>

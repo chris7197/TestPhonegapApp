@@ -49,7 +49,11 @@ var app = {
                 async: true,
                 success: function(msg)
                 {
-                    $('#productList').append('<li data-id="' + msg.d.ID + '">' + msg.d.Name + '</li>');					
+                    $('#palletNumberHdn').val(msg.PalletNumber);
+app.navigate(
+    '#palletInformationVw',
+    'slide:right' //or whichever transition you like
+);
                 },
                 error: function (msg,msg2,msg3) 
 {
@@ -99,3 +103,29 @@ function onOffline()
 {
 }
 
+var palletDataSource = new kendo.data.DataSource({
+    schema: { model: { palletNumber: "palletNumber" } },
+transport: {
+    read: {
+        url: '10.1.2.8:800/StockTakeService.svc/GetPalletDetails',
+        dataType: 'json',
+        type:'GET'
+    },
+     parameterMap: function (data, type) {
+        if (type == "read") {
+            return 'palletNumber=' + $("#palletNumberHdn").val();
+        }
+    }
+  }
+});
+
+var palletModel = kendo.observable({
+     items: palletDataSource,
+     displayName: 'Pallet Information',
+     onAppChange: function(t){
+     $("#Activities").data("kendoGrid").dataSource.read();
+     },
+});
+
+var scanPalletVw = new kendo.View("scanPalletVw", { });
+var activityView = new kendo.View("palletInformationVw", { model: palletModel });
