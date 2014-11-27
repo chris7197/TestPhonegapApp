@@ -41,11 +41,7 @@ var app = {
    var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
         scanner.scan( function (msg) {
           var result = msg.text;
-alert(result);
-$('#palletNumberHdn').val(result);
-
-          appKendo.navigate("#palletInformationVw");
-
+          palletScanned(result);
         }, function (error) { 
              
         });
@@ -53,7 +49,35 @@ $('#palletNumberHdn').val(result);
 }
 
 
+// $('#scanPallet').click(function () {
+// palletScanned('0004-05655');
+// });
  var my_media = null;
+
+function palletScanned(result)
+{
+$('#palletNumberHdn').val(result);
+appKendo.navigate("#palletInformationVw","slide");
+
+  $.ajax({
+        type: 'GET',
+        url: 'http://10.1.2.8:800/StockTakeService.svc/GetPalletDetails?barcode=' + result,
+        contentType: 'application/json; charset=UTF-8',
+        dataType: "json",
+        async: false,
+        error: function (msg) {
+            alert(msg + " p");
+        },
+        success: function (obj) {
+          $('#palletNumber').html(obj.PalletNumber);
+          $('#material').html(obj.Material);
+          $('#colour').html(obj.Colour);
+          $('#afs').html(obj.AvailableForSale);
+        }
+    });
+
+}
+
 function playAudio(src) {
 
            // Create Media object from src
@@ -79,31 +103,7 @@ function onOffline()
 {
 }
 
-var palletDataSource = new kendo.data.DataSource({
-    schema: { model: { barcode: "barcode" } },
-transport: {
-    read: {
-        url: '10.1.2.8:800/StockTakeService.svc/GetPalletDetails',
-        dataType: 'json',
-        type:'GET'
-    },
-     parameterMap: function (data, type) {
-        if (type == "read") {
-            return 'barcode=' + $("#palletNumberHdn").val();
-        }
-    }
-  }
-});
-
-var palletModel = kendo.observable({
-     items: palletDataSource,
-     displayName: 'Pallet Information',
-     onAppChange: function(t){
-      alert('app changed')
-palletDataSource.read();
-     },
-});
 
 var scanPalletVw = new kendo.View("scanPalletVw", { });
-var activityView = new kendo.View("palletInformationVw", { model: palletModel });
+var activityView = new kendo.View("palletInformationVw", { });
  var appKendo = new kendo.mobile.Application();
