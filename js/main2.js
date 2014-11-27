@@ -45,11 +45,6 @@ alert(msg.PalletNumber);
 $('#palletNumberHdn').val(msg.PalletNumber);
 
           app.navigate("#palletInformationVw");
-            /*
-            if (args.format == "QR_CODE") {
-                window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
-            }
-            */
 
         }, function (error) { 
              
