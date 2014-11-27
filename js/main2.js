@@ -40,7 +40,7 @@ var app = {
         
    var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
-        scanner.scan( function (result) {
+        scanner.scan( function (msg) {
 alert(msg.PalletNumber);
 $('#palletNumberHdn').val(msg.PalletNumber);
 
