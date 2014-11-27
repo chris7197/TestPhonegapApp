@@ -41,6 +41,8 @@ var app = {
    var scanner = cordova.require("com.phonegap.plugins.barcodescanner.BarcodeScanner");
 
         scanner.scan( function (result) {
+alert(msg.PalletNumber);
+$('#palletNumberHdn').val(msg.PalletNumber);
 
           app.navigate("#palletInformationVw");
             /*
