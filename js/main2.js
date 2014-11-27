@@ -44,7 +44,7 @@ var app = {
 alert(result);
 $('#palletNumberHdn').val(result);
 
-          app.navigate("#palletInformationVw");
+          appKendo.navigate("#palletInformationVw");
 
         }, function (error) { 
              
@@ -99,9 +99,11 @@ var palletModel = kendo.observable({
      items: palletDataSource,
      displayName: 'Pallet Information',
      onAppChange: function(t){
-     $("#Activities").data("kendoGrid").dataSource.read();
+      alert('app changed')
+palletDataSource.read();
      },
 });
 
 var scanPalletVw = new kendo.View("scanPalletVw", { });
 var activityView = new kendo.View("palletInformationVw", { model: palletModel });
+ var appKendo = new kendo.mobile.Application();
