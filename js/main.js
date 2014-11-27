@@ -1,7 +1,3 @@
-window.onerror = function(msg, url, linenumber) {
-    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-    return true;
-}
 
 var app = {
     // Application Constructor
@@ -46,29 +42,7 @@ var app = {
 
         scanner.scan( function (result) {
 
-                $.ajax({
-                type: 'GET',
-                url: "http://apptest.chrisstclair.co.uk/Services/RetrieveProduct.svc/GetProductInformation?productID=1",
-                contentType: 'application/json; charset=UTF-8',
-                dataType: 'json',
-                async: true,
-                success: function(msg)
-                {
-                    $('#palletNumberHdn').val(msg.PalletNumber);
-app.navigate(
-    '#palletInformationVw',
-    'slide:right' //or whichever transition you like
-);
-                },
-                error: function (msg,msg2,msg3) 
-{
-alert(msg.responseText);
-
-                }
-            });
-
-
-          
+          app.navigate("#palletInformationVw");
             /*
             if (args.format == "QR_CODE") {
                 window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
@@ -109,7 +83,7 @@ function onOffline()
 }
 
 var palletDataSource = new kendo.data.DataSource({
-    schema: { model: { palletNumber: "palletNumber" } },
+    schema: { model: { barcode: "barcode" } },
 transport: {
     read: {
         url: '10.1.2.8:800/StockTakeService.svc/GetPalletDetails',
@@ -118,7 +92,7 @@ transport: {
     },
      parameterMap: function (data, type) {
         if (type == "read") {
-            return 'palletNumber=' + $("#palletNumberHdn").val();
+            return 'barcode=' + $("#palletNumberHdn").val();
         }
     }
   }
